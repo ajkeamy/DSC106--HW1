@@ -26,7 +26,7 @@
             // Reference: https://codepen.io/zakariachowdhury/pen/JEmjwq
             var data = [
             {
-            category: "men_applied",
+            category: "Men Applied",
             values: [
             {year: "2005", student: 18147},
             {year: "2006", student: 19838},
@@ -45,7 +45,7 @@
             ]
             },
             {
-            category: "women_applied",
+            category: "Women Applied",
             values: [
             {year: "2005", student: 22371},
             {year: "2006", student: 23748},
@@ -61,6 +61,44 @@
             {year: "2016", student: 44430},
             {year: "2017", student: 46845},
             {year: "2018", student: 52265}
+            ]
+            },
+            {
+            category: "Men Admitted",
+            values: [
+            {year: "2005", student: 7580},
+            {year: "2006", student: 9210},
+            {year: "2007", student: 8419},
+            {year: "2008", student: 8517},
+            {year: "2009", student: 7816},
+            {year: "2010", student: 8365},
+            {year: "2011", student: 8707},
+            {year: "2012", student: 10917},
+            {year: "2013", student: 11866},
+            {year: "2014", student: 11758},
+            {year: "2015", student: 12748},
+            {year: "2016", student: 14103},
+            {year: "2017", student: 13981},
+            {year: "2018", student: 13781}
+            ]
+            },
+            {
+            category: "Women Admitted",
+            values: [
+            {year: "2005", student: 10311},
+            {year: "2006", student: 12135},
+            {year: "2007", student: 10759},
+            {year: "2008", student: 11200},
+            {year: "2009", student: 9863},
+            {year: "2010", student: 9991},
+            {year: "2011", student: 10269},
+            {year: "2012", student: 12046},
+            {year: "2013", student: 12966},
+            {year: "2014", student: 12837},
+            {year: "2015", student: 13761},
+            {year: "2016", student: 16170},
+            {year: "2017", student: 16231},
+            {year: "2018", student: 15821}
             ]
             }
         ];
@@ -217,7 +255,7 @@
         .style("font-size", "16px") 
         .text("UCSD Full time Applications Men vs Women"); 	
         
-        var legend_keys = ["Men Applied", "Women Applied"]
+        var legend_keys = ["Men Applied", "Women Applied", "Men Admitted", "Women Admitted"]
         var lineLegend = svg.selectAll(".lineLegend").data(legend_keys)
             .enter().append("g")
             .attr("class","lineLegend")
