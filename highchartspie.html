@@ -1,0 +1,49 @@
+<html>
+   <head>
+      <script src = "https://code.highcharts.com/highcharts.js"></script>  
+   </head>
+   
+   <body>
+      <div id = "container" style = "width: 550px; height: 400px; margin: 0 auto"></div>
+      <script language = "JavaScript">
+        Highcharts.chart('container', {
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false,
+                type: 'pie'
+            },
+            title: {
+                text: 'Men vs Women Acceptance Rates, 2018'
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true,
+                        format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+                    }
+                }
+            },
+            series: [{
+        name: 'Genders',
+        colorByPoint: true,
+        data: [{
+            name: 'Female',
+            y: 53.5,
+            sliced: true,
+            selected: true
+        }, {
+            name: 'Male',
+            y: 46.5
+        }]
+    }]
+});
+      </script>
+   </body>
+   
+</html>
