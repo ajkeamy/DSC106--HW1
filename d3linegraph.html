@@ -236,7 +236,8 @@
         .attr("x",330)
         .attr("fill", "#000")
         .style("font-size", "12px") 
-        .text("Year");
+        .text("Years")
+        
         
         svg.append("g")
         .attr("class", "y axis")
@@ -253,7 +254,7 @@
         .attr("y", 0)
         .attr("text-anchor", "middle")  
         .style("font-size", "16px") 
-        .text("UCSD Full time Applications Men vs Women"); 	
+        .text("UCSD Full time Applications and Admissions, 2005-2018"); 	
         
         var legend_keys = ["Men Applied", "Women Applied", "Men Admitted", "Women Admitted"]
         var lineLegend = svg.selectAll(".lineLegend").data(legend_keys)
