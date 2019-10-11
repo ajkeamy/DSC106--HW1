@@ -18,18 +18,14 @@
     width = +svg.attr("width") - margin.left - margin.right,
     height = +svg.attr("height") - margin.top - margin.bottom,
     g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
   var x = d3.scaleBand()
     .rangeRound([0, width])
     .paddingInner(0.05)
     .align(0.1);
-
   var y = d3.scaleLinear()
     .rangeRound([height, 0]);
-
   var z = d3.scaleOrdinal()
     .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
-
   var data = [{
     "year": 2005,
     "fulltime_men_applied": 18147,
@@ -78,8 +74,6 @@
     "fulltime_women_applied": 28351,
     "fulltime_men_admitted": 8707,
     "fulltime_women_admitted": 10269,
-    "fulltime_men_enrolled": 1583,
-    "fulltime_women_enrolled": 1861
   },
   {
     "year": 2012,
@@ -87,8 +81,6 @@
     "fulltime_women_applied": 32049,
     "fulltime_men_admitted": 10917,
     "fulltime_women_admitted": 12046,
-    "fulltime_men_enrolled": 2328,
-    "fulltime_women_enrolled": 2245
   },
   {
     "year": 2013,
@@ -96,8 +88,6 @@
     "fulltime_women_applied": 35408,
     "fulltime_men_admitted": 11866,
     "fulltime_women_admitted": 12966,
-    "fulltime_men_enrolled": 2616,
-    "fulltime_women_enrolled": 2612
   },
  
   {
@@ -136,9 +126,7 @@
     "fulltime_women_applied": 52265,
     "fulltime_men_admitted": 13781,
     "fulltime_women_admitted": 15821,
-
   }];
-
   var keys = [];
   for (key in data[0]){
     if (key != "year")
@@ -150,7 +138,6 @@
       d.total += d[k];
     })
   });
-
   data.sort(function(a, b) {
     return b.total - a.total;
   });
@@ -161,7 +148,6 @@
     return d.total;
   })]).nice();
   z.domain(keys);
-
   g.append("g")
     .selectAll("g")
     .data(d3.stack().keys(keys)(data))
@@ -184,12 +170,10 @@
       return y(d[0]) - y(d[1]);
     })
     .attr("width", x.bandwidth());
-
   g.append("g")
     .attr("class", "axis")
     .attr("transform", "translate(0," + height + ")")
     .call(d3.axisBottom(x));
-
   g.append("g")
     .attr("class", "axis")
     .call(d3.axisLeft(y).ticks(null, "s"))
@@ -201,7 +185,6 @@
     .attr("font-weight", "bold")
     .attr("text-anchor", "start")
     .text("Population");
-
   var legend = g.append("g")
     .attr("font-family", "sans-serif")
     .attr("font-size", 10)
@@ -213,12 +196,12 @@
       return "translate(0," + i * 20 + ")";
     });
 
+    
   legend.append("rect")
     .attr("x", width - 19)
     .attr("width", 19)
     .attr("height", 19)
     .attr("fill", z);
-
   legend.append("text")
     .attr("x", width - 24)
     .attr("y", 9.5)
@@ -226,4 +209,18 @@
     .text(function(d) {
       return d;
     });
+    /* Add Axis into SVG */
+    var xAxis = d3.axisBottom(xScale).ticks(5);
+        var yAxis = d3.axisLeft(yScale).ticks(5);
+        svg.append("g")
+        .attr("class", "x axis")
+        .attr("transform", `translate(0, ${height-margin})`)
+        .call(xAxis)
+        .append('text')
+        .attr("y", 30)
+        .attr("x",330)
+        .attr("fill", "#000")
+        .style("font-size", "12px") 
+        .text("Years"); 	
+        
 </script>
